@@ -1,4 +1,4 @@
-package com.bank.system.account;
+package com.bank.system.model.account;
 
 import java.math.BigDecimal;
 
@@ -9,11 +9,17 @@ public abstract class Account {
     private String accountOwner;
     private BigDecimal accountBalance;
 
-    abstract void deposit();
-    abstract void withdraw();
-    abstract BigDecimal calculate();
+    public void deposit(BigDecimal depositAmount){
 
+    }
 
+    public void withdraw(BigDecimal withdrawalAmount){
+
+    }
+
+    abstract BigDecimal calculateInterest(BigDecimal accountBalance);
+
+    abstract void updateAccountBalance(BigDecimal accountBalance, BigDecimal interest);
 
     public String getAccountId() {
         return accountId;
