@@ -5,6 +5,4 @@ package com.bank.system;
  */
 public class OperatorLogin {
 
-
-
 }
