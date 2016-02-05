@@ -7,8 +7,13 @@ import java.math.BigDecimal;
  */
 public class SavingsAccount extends Account {
 
+    public SavingsAccount(int accountNumber) {
+        super(accountNumber);
+    }
+
     @Override
     public BigDecimal calculateInterest(BigDecimal accountBalance) {
+        //calculation
         return null;
     }
 

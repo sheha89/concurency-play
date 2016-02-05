@@ -5,21 +5,40 @@ import java.math.BigDecimal;
 public abstract class Account {
 
     private String accountId;
-    private String accountNumber;
+    private int accountNumber;
     private String accountOwner;
     private BigDecimal accountBalance;
 
-    public void deposit(BigDecimal depositAmount){
-
+    public Account(int accountNumber) {
+        this.accountNumber = accountNumber;
+        accountBalance = BigDecimal.valueOf(0);
     }
 
-    public void withdraw(BigDecimal withdrawalAmount){
-
+    public void credit(BigDecimal amount) {
+        System.out.println("start credit");
+        synchronized (this) {
+            this.accountBalance = this.accountBalance.add(amount);
+        }
+        System.out.println("end credit");
     }
+
+    public void debit(BigDecimal amount) {
+        System.out.println("start debit");
+        synchronized (this) {
+//        if (accountBalance. < amount) {
+//            System.out.println("amount withdrawn exceeds the current balance!");
+//        } else {
+//            accountBalance -= amount;
+//        }
+        }
+        System.out.println("end credit");
+    }
+
 
     abstract BigDecimal calculateInterest(BigDecimal accountBalance);
 
     abstract void updateAccountBalance(BigDecimal accountBalance, BigDecimal interest);
+
 
     public String getAccountId() {
         return accountId;
@@ -29,11 +48,11 @@ public abstract class Account {
         this.accountId = accountId;
     }
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
